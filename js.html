@@ -1,0 +1,366 @@
+Lab-7a
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Calculator</title>
+    <style>
+       .container {
+            margin: 50px auto;
+            width: 400px;
+            padding: 30px;
+            background-color: #f5f5f5;
+            border-radius: 10px;
+            box-shadow: 0 0 5px 0 gray;
+        }
+       
+        button {
+            background-color: lightgreen;
+            padding:10px;
+        }
+    </style>
+</head>
+<body>
+
+   <div class="container">
+        <h1>Calculator</h1>
+        <label for="num1">Enter the Number-1</label>
+        <input type="text" id="num1">
+        <br><br>
+        <label for="num2">Enter the Number-2</label>
+        <input type="text" id="num2">
+        <br><br>
+
+    <button onclick="calculate('+')">+</button>
+    <button onclick="calculate('-')">-</button>
+    <button onclick="calculate('*')">*</button>
+    <button onclick="calculate('/')">/</button><br><br>
+    
+
+    <div id="result"></div> <br><!-- output like first code -->
+    <button onclick="clearValues()">Clear</button>
+    </div>
+
+    <script>
+        function calculate(operator) {
+            let n1 = parseFloat(document.getElementById("num1").value);
+            let n2 = parseFloat(document.getElementById("num2").value);
+            let result;
+
+            if (operator === '+') result = n1 + n2;
+            else if (operator === '-') result = n1 - n2;
+            else if (operator === '*') result = n1 * n2;
+            else if (operator === '/') result = n2 !== 0 ? n1 / n2 : "Cannot divide by zero";
+
+            document.getElementById("result").innerText = "Result: " + result;
+        }
+
+        function clearValues() {
+            document.getElementById("num1").value = "";
+            document.getElementById("num2").value = "";
+            document.getElementById("result").innerText = "";
+        }
+    </script>
+
+</body>
+</html>
+
+
+
+
+Lab-7b
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validate Form</title>
+    <style>
+      
+    .container {
+    margin: 50px auto;
+    width: 400px;
+    padding: 30px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
+   }
+
+    input[type="text"],button {
+    font-size: 15px;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 2px;
+  }
+
+button{
+    font-size: 15px;
+    background-color: rgb(204, 222, 216);
+    text-align: center;
+    padding: 10px;
+}
+    </style>
+
+<script src="script.js"></script>
+</head>
+<body>
+    <div class="container">
+        <form>
+            <label for="name">Enter your name</label><br><br>
+            <input type="text" id="name" placeholder="Your Name"><br><br>
+            <label for="email"> Enter Your Email ID</label><br><br>
+            <input type="text" id="email" placeholder="Your Email"><br><br>
+            <label for="mobile">Enter Your Mobile Number</label><br><br>
+            <input type="text" id="mobile" placeholder="Your Mobile Number"><br><br>
+            <select id="gender"><br><br>
+                <option value="">Select Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select><br><br>
+              <label for="color">Enter Your Favorite Color</label><br><br>
+              <input type="text" id="color" placeholder="Your Favorite Color"><br>\<br>
+              <button onclick="validate()">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
+
+function validate() {
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+    let mobile = document.getElementById("mobile").value;
+    let gender = document.getElementById("gender").value;
+    let color = document.getElementById("color").value;
+
+    if(name === "") {
+        alert("Please enter your name");
+        return;
+    }
+    if(email === "" || !email.includes(".") || !email.includes("@")) {
+        alert("Please enter a valid Email");
+        return;
+    }
+    if(mobile === "" || mobile.length !== 10 || isNaN(mobile)) {
+        alert("Please Enter a valid Mobile Number");
+        return;
+    }
+    if(gender === "") {
+        alert("Please enter your Gender");
+        return;
+    }
+    if(color === "") {
+        alert("Please Enter Color");
+        return;
+    }
+
+    
+    let output = "Name: " + name + "\n" +
+                 "Email: " + email + "\n" +
+                 "Mobile: " + mobile + "\n" +
+                 "Gender: " + gender + "\n" +
+                 "Color: " + color + "\n";
+
+    // Alert the information
+    alert(output);
+}
+
+
+
+
+Lab-8
+<!-- Write an XHTML document which displays a form containing text elements to input register number, sub-code, marks in three tests and a button element. 
+Also write Java script compute the average of two best tests on click of button and print average marks using alert. Validate all the fields using JavaScript. -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XHTML Validation form</title>
+    <style>
+    .container {
+    margin: 50px auto;
+    width: 400px;
+    padding: 30px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
+     }
+
+
+    input[type="text"]{
+    font-size: 12px;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 2px;
+    width: 70%;
+     }
+
+    button{
+    font-size: 12px;
+    background-color: rgb(204, 222, 216);
+    text-align: center;
+    padding: 10px;
+   }
+
+    </style>
+    <script src="script.js"></script>
+</head>
+<body>
+    <div class="container">
+        <form>
+            <h1>Student Details form</h1>
+            <label for="usn">Enter Your Registration number</label><br><br>
+            <input type="text" id="usn" placeholder="Your USN"><br><br>
+            <label for="code">Enter your Subject Code</label><br><br>
+            <input type="text" id="code" placeholder="Subject Code"><br><br>
+            <label for="marks-1">Enter Your Test-1 Marks</label><br><br>
+            <input type="text" id="marks1" placeholder="Test-1 marks"><br><br>
+            <label for="marks-2">Enter Your Test-2 Marks</label><br><br>
+            <input type="text" id="marks2" placeholder="Test-2 marks"><br><br>
+            <label for="marks-3">Enter Your Test-3 Marks</label><br><br>
+            <input type="text" id="marks3" placeholder="Test-3 marks"><br><br>
+
+            <button onclick="validate()">Submit</button><br><br>
+            
+        </form>
+    </div>
+</body>
+</html>
+
+function validate(){
+    let usn=document.getElementById("usn").value;
+    let sub_code=document.getElementById("code").value;
+    let m1=document.getElementById("marks1").value;
+    let m2=document.getElementById("marks2").value;
+    let m3=document.getElementById("marks3").value;
+
+    if(usn===""){
+        alert("Please Enter your USN number");
+        return;
+    }
+    if(sub_code===""){
+        alert("Please Enter the subject code");
+        return;
+    }
+    if(m1>20 || m2>20 || m3>20 || m1<0 || m2<0 || m3<0){
+        alert("Enter valid marks");
+        return;
+    }
+    if(m1==="" || m2==="" || m3===""){
+        alert("Please Enter Your marks");
+        return;
+    }
+
+    let display  =
+      "USN: " + usn + "\n" +
+      "Subject-Code: " + sub_code + "\n" +
+      "Marks 1: " + m1 + "\n" +
+      "Marks 2: " + m2 + "\n" +
+      "Marks 3: " + m3 +"\n" ;
+
+      marks=[m1,m2,m3];
+      marks.sort();
+      let average=(parseInt(marks[1])+parseInt(marks[2]))/2;
+      alert("The average of the best two test is " + average + "\n" + display);
+}
+
+
+
+
+Lab-9
+<!-- Develop an XHTML document and Java script to validate the following fields in a registration page:
+i. User ID (must be of length 5 to 12)
+iii.
+ii.Name (only alphabets and the length should not be less than 15 characters)
+iii.Password (must be eight characters including one uppercase letter, one special character and alphanumeric characters)
+iv. E-mail (should not contain invalid addresses) -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XHTML validation form</title>
+    <style>
+        .container {
+    margin: 50px auto;
+    width: 400px;
+    padding: 30px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
+     }
+
+
+    input{
+    font-size: 12px;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 2px;
+    width: 70%;
+     }
+
+    button{
+    font-size: 12px;
+    background-color: rgb(204, 222, 216);
+    text-align: center;
+    padding: 10px;
+     }
+
+    </style>
+    <script src="script.js"></script>
+</head>
+<body>
+    <div class="container">
+        <form>
+            <h1>Validation Form</h1>
+            <label for="user">Enter Your User ID</label><br><br>
+             <input type="text" id="user" placeholder="Your User ID"><br><br>
+             <label for="name">Enter your name</label><br><br>
+             <input type="text" id="name" placeholder="Your name"><br><br>
+             <label for="password">Enter your password</label><br><br>
+             <input type="password" id="password" placeholder="Your Password"><br><br>
+             <label for="email">Enter Your Email ID</label><br><br>
+             <input type="email" id="email" placeholder="Your Email"><br><br>
+             
+             <button onclick="validate()">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
+
+
+function validate() {
+    // Retrieve input values
+    let userId = document.getElementById("user").value;
+    let name = document.getElementById("name").value;
+    let password = document.getElementById("password").value;
+    let email = document.getElementById("email").value;
+
+    // Regular expressions for validation
+    let userIdRegex = /^[a-zA-Z0-9]{5,12}$/;//5-12 is the length
+    let nameRegex = /^[a-zA-Z ]{15,}$/;
+    let passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;//over 8 length
+    let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    // Validation checks
+    if (!userIdRegex.test(userId)) {
+        alert("User ID must be between 5 to 12 characters and can contain only alphanumeric characters.");
+        return;
+    }
+    if (!nameRegex.test(name)) {
+        alert("Name must contain only alphabets and should be at least 15 characters long.");
+        return;
+    }
+    if (!passwordRegex.test(password)) {
+        alert("Password must be eight characters long, containing at least one uppercase letter, one special character, and alphanumeric characters.");
+        return;
+    }
+    if (!emailRegex.test(email)) {
+        alert("Invalid email address.");
+        return;
+    }
+
+    // If all validations pass, display success message
+    alert("Form submitted successfully!");
+}    
